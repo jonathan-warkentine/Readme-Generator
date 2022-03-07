@@ -1,43 +1,82 @@
-// TODO: Include packages needed for this application
 const fs = require('fs');
 const inquirer = require('inquirer');
+const { stringify } = require('querystring');
+const generateMarkdown = require('./utils/generateMarkdown');
 require('./utils/generateMarkdown');
 
-// TODO: Create an array of questions for user input
 const questions = [
-    "Project TITLE?:",
-    "Project DESCRIPTION?:", 
-    "Installation Instructions?:", 
-    "Usage Information?:",
-    "Contribution guidelines:",
-    "Test Instructions?:",
-    "Project LICENSE?:",
-    "What is your GitHub USERNAME?:",
-    "What is your GitHub URL?:"
+    {
+        type: 'input',
+        name: 'title',
+        message: "Project TITLE?:",
+    },
+    {
+        type: 'input',
+        name: 'description',
+        message: 'Project DESCRIPTION?:'
+    },
+    {
+        type: 'input',
+        name: 'installInstr',
+        message: "Installation Instructions?:",
+    },
+    {
+        type: 'input',
+        name: 'usageInfo',
+        message:  "Usage Information?:",
+    },
+    {
+        type: 'input',
+        name: 'contrGuidelines',
+        message:  "Contribution guidelines:",
+    },
+    {
+        type: 'input',
+        name: 'testingInstructions',
+        message: 'Test Instructions?:',
+    },
+    {
+        type: 'list',
+        name: 'license',
+        message:   "Project LICENSE?:",
+        choices: ['MIT License', 'Apache 2.0 License', 'GNU GPL v3', "None"],
+    },
+    {
+        type: 'input',
+        name: 'githubUsername',
+        message: "What is your GitHub USERNAME?:",
+    },
+    {
+        type: 'input',
+        name: 'githubUrl',
+        message: "What is your GitHub URL?:",
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'What is a good email address for questions about this project?:'
+    }
 ];
 
-// TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    
-}
-
-// TODO: Create a function to initialize app
-function init() {
-    inquirer
-    .prompt([
-        "hi"
-    ])
-    .then((answers) => {
-    // Use user feedback for... whatever!!
-    })
-    .catch((error) => {
-        if (error.isTtyError) {
-        // Prompt couldn't be rendered in the current environment
-        } else {
-        // Something else went wrong
+    fs.mkdirSync(fileName, (err) => {
+        if (err) {
+            return console.error(err);
         }
+    })
+    fs.writeFile(`./${fileName}/${fileName}`, data, err => {
+        if (err){
+            console.log(err);
+            return;
+        }
+        console.log(`Your new README was succesfully written to the new ${fileName} directory!`)
     });
 }
 
-// Function call to initialize app
+function init() {
+    inquirer.prompt(questions).then((answers => {
+        writeToFile(`${answers.title}.md`, generateMarkdown(answers));
+    }))
+}
+
 init();
