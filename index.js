@@ -64,18 +64,18 @@ function writeToFile(fileName, data) {
             return console.error(err);
         }
     })
-    fs.writeFile(`./${fileName}/${fileName}`, data, err => {
+    fs.writeFile(`./dist/${fileName}/${fileName}.md`, data, err => {
         if (err){
             console.log(err);
             return;
         }
-        console.log(`Your new README was succesfully written to the new ${fileName} directory!`)
+        console.log(`Your new README was succesfully written to the new ${fileName} directory (within the the "dist" directory)!`)
     });
 }
 
 function init() {
     inquirer.prompt(questions).then((answers => {
-        writeToFile(`${answers.title}.md`, generateMarkdown(answers));
+        writeToFile(answers.title, generateMarkdown(answers));
     }))
 }
 
