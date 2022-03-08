@@ -3,6 +3,8 @@ const inquirer = require('inquirer');
 const stringify = require('querystring');
 const generateMarkdown = require('./utils/generateMarkdown');
 
+
+
 const questions = [
     {
         type: 'input',
@@ -53,22 +55,31 @@ const questions = [
 ];
 
 function writeToFile(fileName, data) {
-    fs.mkdirSync(fileName, (err) => {
+    fs.mkdirSync(`./dist/${fileName}`, (err) => {
         if (err) {
             return console.error(err);
         }
     })
+    
     fs.writeFile(`./dist/${fileName}/${fileName}.md`, data, err => {
         if (err){
             console.log(err);
             return;
         }
-        console.log(`Your new README was succesfully written to the new ${fileName} directory (within the the "dist" directory)!`)
+        console.log(`Your new README was succesfully written to the new '${fileName}' directory (within the the 'dist' directory)!`)
     });
 }
 
 function init() {
-    inquirer.prompt(questions).then((answers => {
+    if (!fs.existsSync('./dist')){ //make sure we have a 'dist' folder to save our resulting README to
+        fs.mkdirSync(`./dist`, (err) => {
+            if (err) {
+                return console.error(err);
+            }
+        })
+    }
+
+    inquirer.prompt( questions).then((answers => {
         writeToFile(answers.title, generateMarkdown(answers));
     }))
 }
