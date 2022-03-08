@@ -1,8 +1,7 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
-const { stringify } = require('querystring');
+const stringify = require('querystring');
 const generateMarkdown = require('./utils/generateMarkdown');
-require('./utils/generateMarkdown');
 
 const questions = [
     {
@@ -45,11 +44,6 @@ const questions = [
         type: 'input',
         name: 'githubUsername',
         message: "What is your GitHub USERNAME?:",
-    },
-    {
-        type: 'input',
-        name: 'githubUrl',
-        message: "What is your GitHub URL?:",
     },
     {
         type: 'input',

@@ -61,7 +61,7 @@ function generateMarkdown(data) {
   ${data.testingInstructions}
   
   ## Questions
-  [Github Profile](${data.githubUrl}) <- Submit an issue!
+  [${data.githubUsername}](https://github.com/${data.githubUsername}) <- Submit an issue!
   Or send us an email: ${data.email}
 `;
 }
