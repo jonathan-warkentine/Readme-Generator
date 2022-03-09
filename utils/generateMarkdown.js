@@ -71,14 +71,14 @@ function generateMarkdown(data) {
 
   ---
   ---
-  #### License:
+  #### *License:*
 
   [${renderLicenseBadge(data.license)}](${renderLicenseLink(data.license)})
 
   &nbsp;  
 
   ---
-  #### How to Contribute:
+  #### *How to Contribute:*
 
   ${data.contrGuidelines}
 
@@ -86,7 +86,7 @@ function generateMarkdown(data) {
 
   ---
 
-  #### Tests:
+  #### *Tests:*
 
   ${data.testingInstructions}
 
@@ -94,7 +94,7 @@ function generateMarkdown(data) {
 
   ---
 
-  #### Questions?
+  #### *Questions?*
 
   [Find me on GitHub: ${data.githubUsername}](https://github.com/${data.githubUsername})
 
