@@ -54,19 +54,21 @@ const questions = [
     }
 ];
 
-function writeToFile(fileName, data) {
-    fs.mkdirSync(`./dist/${fileName}`, (err) => {
-        if (err) {
-            return console.error(err);
-        }
-    })
+function writeToFile(projectTitle, data) {
+    if (!fs.existsSync(`./dir/${projectTitle}`)){ //make sure we have a folder with the project name to save our resulting README to
+        fs.mkdirSync(`./dir/${projectTitle}`, (err) => {
+            if (err) {
+                return console.error(err);
+            }
+        })
+    }
     
-    fs.writeFile(`./dist/${fileName}/${fileName}.md`, data, err => {
+    fs.writeFile(`./dist/${projectTitle}/README.md`, data, err => {
         if (err){
             console.log(err);
             return;
         }
-        console.log(`Your new README was succesfully written to the new '${fileName}' directory (within the the 'dist' directory)!`)
+        console.log(`Your new README was succesfully written to the new '${projectTitle}' directory (within the the 'dist' directory)!`)
     });
 }
 
