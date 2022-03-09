@@ -33,9 +33,12 @@ function renderLicenseLink(license) {
 function generateMarkdown(data) {
   return `
   # ${data.title}
-
+  by [${data.githubUsername}](https://github.com/${data.githubUsername})
+  ---
+  ---
   ## Description
   ${data.description}
+  ---
 
   ## Table of Contents:
   - [Installation](#installation)
@@ -44,25 +47,31 @@ function generateMarkdown(data) {
   - [Contributing](#contributing)
   - [Tests](#tests)
   - [Questions](#questions)
+  ---
 
   ## Installation
   ${data.installInstr}
+  ---
 
   ## Usage
   ${data.usageInfo}
+  ---
 
-  ## License
-  ### [${renderLicenseBadge(data.license)}](${renderLicenseLink(data.license)})
+  ### License
+  [${renderLicenseBadge(data.license)}](${renderLicenseLink(data.license)})
+  ---
 
-  ## How to Contribute
+  ### How to Contribute
   ${data.contrGuidelines}
+  ---
 
-  ## Tests
+  ### Tests
   ${data.testingInstructions}
-  
-  ## Questions
-  [${data.githubUsername}](https://github.com/${data.githubUsername}) <- Submit an issue!
-  Or send us an email: ${data.email}
+  ---
+
+  ### Questions?
+  [Find me on GitHub: ${data.githubUsername}](https://github.com/${data.githubUsername})
+  Or send an email: ${data.email}
 `;
 }
 

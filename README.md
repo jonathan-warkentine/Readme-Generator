@@ -1,4 +1,4 @@
-# Readme-Generator
+# README Generator
 
 
 ## Usage
