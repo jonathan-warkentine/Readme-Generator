@@ -55,8 +55,8 @@ const questions = [
 ];
 
 function writeToFile(projectTitle, data) {
-    if (!fs.existsSync(`./dir/${projectTitle}`)){ //make sure we have a folder with the project name to save our resulting README to
-        fs.mkdirSync(`./dir/${projectTitle}`, (err) => {
+    if (!fs.existsSync(`./dist/${projectTitle}`)){ //make sure we have a folder with the project name to save our resulting README to
+        fs.mkdirSync(`./dist/${projectTitle}`, (err) => {
             if (err) {
                 return console.error(err);
             }
