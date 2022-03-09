@@ -79,7 +79,7 @@ function init() {
         })
     }
 
-    inquirer.prompt(questions).then((answers => {
+    inquirer.prompt( questions).then((answers => {
         writeToFile(answers.title, generateMarkdown(answers));
     }))
 }
