@@ -33,46 +33,73 @@ function renderLicenseLink(license) {
 function generateMarkdown(data) {
   return `
   # ${data.title}
-  by [${data.githubUsername}](https://github.com/${data.githubUsername})
-  ---
-  ---
-  ## Description
-  ${data.description}
-  ---
 
+  &nbsp;  
+
+  ---
+  ## Description:
+
+  ${data.description}
+
+  &nbsp;  
+
+  ---
   ## Table of Contents:
+
   - [Installation](#installation)
   - [Usage](#usage)
   - [License](#license)
   - [Contributing](#contributing)
   - [Tests](#tests)
   - [Questions](#questions)
-  ---
 
-  ## Installation
+  &nbsp;  
+
+  ---
+  ## Installation:
+
   ${data.installInstr}
-  ---
 
-  ## Usage
+  &nbsp;  
+
+  ---
+  ## Usage:
+
   ${data.usageInfo}
-  ---
 
-  ### License
+  &nbsp;  
+
+  ---
+  ---
+  #### License:
+
   [${renderLicenseBadge(data.license)}](${renderLicenseLink(data.license)})
-  ---
 
-  ### How to Contribute
+  &nbsp;  
+
+  ---
+  #### How to Contribute:
+
   ${data.contrGuidelines}
+
+  &nbsp;  
+
   ---
 
-  ### Tests
+  #### Tests:
+
   ${data.testingInstructions}
+
+  &nbsp;  
+
   ---
 
-  ### Questions?
+  #### Questions?
+
   [Find me on GitHub: ${data.githubUsername}](https://github.com/${data.githubUsername})
-  Or send an email: ${data.email}
-`;
+
+  Or send an email: [${data.email}](mailto:${data.email})
+  `;
 }
 
 module.exports = generateMarkdown;
