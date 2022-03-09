@@ -10,7 +10,7 @@ function renderLicenseBadge(license) {
       return '![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)';
       break;
     default: 
-      return "";
+      return "NA";
   }
 }
 
@@ -26,7 +26,7 @@ function renderLicenseLink(license) {
       return 'https://www.gnu.org/licenses/gpl-3.0';
       break;
     default: 
-      return "";
+      return "https://opensource.org/licenses";
   }
 }
 
